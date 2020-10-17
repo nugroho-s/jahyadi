@@ -1,13 +1,12 @@
-import json
 import logging
 from os import environ
 
 import discord
 
-from Kontribusi import Kontribusi
-from Penis import Penis
-from Quote import Quote
-from Say import Say
+from command.Kontribusi import Kontribusi
+from command.Penis import Penis
+from command.Quote import Quote
+from command.Say import Say
 
 logging.basicConfig(format='[%(levelname)s] [%(name)s] %(message)s', level=logging.INFO)
 prefix = "sudah"
