@@ -7,6 +7,7 @@ import discord
 from Kontribusi import Kontribusi
 from Penis import Penis
 from Quote import Quote
+from Say import Say
 
 logging.basicConfig(format='[%(levelname)s] [%(name)s] %(message)s', level=logging.INFO)
 prefix = "sudah"
@@ -16,7 +17,8 @@ client = discord.Client()
 commandhandlers = {
                     "penis": Penis(client, logging),
                     "kontribusi": Kontribusi(),
-                    "quote": Quote()
+                    "quote": Quote(),
+                    "say": Say(client, logging)
                   }
 
 
