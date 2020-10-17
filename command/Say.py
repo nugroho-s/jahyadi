@@ -15,7 +15,7 @@ class Say:
         if message.author.id not in self.allowed_users:
             self.logging.info("{} is not allowed to say".format(message.author.id))
             return
-        self.logging.info(message.content)
+
         if len(args) < 4:
             return
 
