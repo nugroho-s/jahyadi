@@ -16,7 +16,6 @@ client = discord.Client()
 
 commandhandlers = {
                     "penis": Penis(client, logging),
-                    "kontribusi": Kontribusi(),
                     "quote": Quote(logging),
                     "say": Say(client, logging),
                     "empati": Empati(client, logging)
