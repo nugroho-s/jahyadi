@@ -4,6 +4,7 @@ from os import environ
 import discord
 
 from command.Empati import Empati
+from command.Intonasi import Intonasi
 from command.Kontribusi import Kontribusi
 from command.Penis import Penis
 from command.Quote import Quote
@@ -19,7 +20,8 @@ commandhandlers = {
                     "penis": Penis(client, logging),
                     "quote": Quote(logging),
                     "say": Say(client, logging),
-                    "empati": Empati(client, logging)
+                    "empati": Empati(client, logging),
+                    "intonasi": Intonasi(client, logging)
                   }
 
 
