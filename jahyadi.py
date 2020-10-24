@@ -8,6 +8,7 @@ from command.Kontribusi import Kontribusi
 from command.Penis import Penis
 from command.Quote import Quote
 from command.Say import Say
+from util.Util import try_send
 
 logging.basicConfig(format='[%(levelname)s] [%(name)s] %(message)s', level=logging.INFO)
 prefix = "sudah"
@@ -33,10 +34,10 @@ async def on_message(message):
         return
 
     if '750726551762370680>' in message.content:
-        await message.channel.send('Kalau mau aku baikan, dont ever tag me!!')
+        await try_send('Kalau mau aku baikan, dont ever tag me!!')
 
     elif message.content.lower() == 'p':
-        await message.channel.send('Apa kau ga malu, salam pakai P?')
+        await try_send('Kalau mau aku baikan, dont ever tag me!!')
 
     comparator_prefix = message.content[:len(prefix)].lower()
     if comparator_prefix != prefix:
