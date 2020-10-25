@@ -36,10 +36,7 @@ async def on_message(message):
         return
 
     if '750726551762370680>' in message.content:
-        await try_send('Kalau mau aku baikan, dont ever tag me!!')
-
-    elif message.content.lower() == 'p':
-        await try_send('Kalau mau aku baikan, dont ever tag me!!')
+        await try_send(message.channel, 'Kalau mau aku baikan, dont ever tag me!!')
 
     comparator_prefix = message.content[:len(prefix)].lower()
     if comparator_prefix != prefix:
