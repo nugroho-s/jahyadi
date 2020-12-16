@@ -21,7 +21,7 @@ from util.Util import try_send
 logging.basicConfig(format='[%(levelname)s] [%(name)s] %(message)s', level=logging.INFO)
 prefix = "sudah"
 
-engine = create_engine(environ.get('DATABASE_URL'), echo=True)
+engine = create_engine(environ.get('DATABASE_URL'))
 conn = engine.connect()
 Session = sessionmaker(bind=engine)
 session = Session()

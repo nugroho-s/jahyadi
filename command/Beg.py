@@ -18,7 +18,6 @@ class Beg:
             self.session.commit()
         user = self.session.query(User).filter(User.user_id == message.author.id).one()
         if count > 0:
-            self.logging.info("delay {}".format((datetime.now() - user.updated_time).total_seconds()))
             if (datetime.now() - user.updated_time).total_seconds() < 60:
                 await try_send(message.channel, "kecepetan bodoh delaynya semenit")
                 return
