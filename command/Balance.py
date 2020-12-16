@@ -16,4 +16,5 @@ class Balance:
             self.session.add(User(message.author.id, 0, datetime.now()))
             self.session.commit()
         user = self.session.query(User).filter(User.user_id == message.author.id).one()
-        await try_send(message.channel, 'jahyadi coinmu {}'.format(user.jahyadi_coin))
+        userDiscord = await self.client.fetch_user(user.user_id)
+        await try_send(message.channel, 'jahyadi coin {} {}'.format(userDiscord.name(), user.jahyadi_coin))
