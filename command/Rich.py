@@ -12,7 +12,7 @@ class Rich:
         pass
 
     async def do_response(self, message, args):
-        results = self.session.query(User).filter(User.user_id == message.author.id).order_by(User.jahyadi_coin.desc()).limit(10)
+        results = self.session.query(User).order_by(User.jahyadi_coin.desc()).limit(10)
         richest10 = "Para penghasil kapital ekonomi:\n"
         i = 1
         for row in results:
