@@ -1,21 +1,18 @@
 import logging
-from datetime import datetime
 from os import environ
 
 import discord
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-from command.Balance import Balance
-from command.Beg import Beg
-from command.Empati import Empati
-from command.Intonasi import Intonasi
-from command.Kontribusi import Kontribusi
-from command.Penis import Penis
-from command.Quote import Quote
-from command.Rich import Rich
+from command.economy.Balance import Balance
+from command.economy.Beg import Beg
+from command.fun.Empati import Empati
+from command.fun.Intonasi import Intonasi
+from command.fun.Penis import Penis
+from command.fun.Quote import Quote
+from command.economy.Rich import Rich
 from command.Say import Say
-from model.User import User
 from util.Util import try_send
 
 logging.basicConfig(format='[%(levelname)s] [%(name)s] %(message)s', level=logging.INFO)
@@ -58,6 +55,12 @@ async def on_message(message):
         return
 
     args = message.content.lower().split(' ')
+
+    if args[1] == "help":
+        help_str = ""
+        for key in commandhandlers.keys():
+            help_str = help_str + key + ', '
+        await try_send(message.channel, help_str[0:-2])
 
     if args[1] in commandhandlers:
         await commandhandlers[args[1]].do_response(message, args)
