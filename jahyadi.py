@@ -34,7 +34,7 @@ commandhandlers = {
                     "empati": Empati(client, logging),
                     "intonasi": Intonasi(client, logging),
                     "beg": Beg(logging, session),
-                    "bal": Balance(logging, session)
+                    "bal": Balance(client, logging, session)
                   }
 
 

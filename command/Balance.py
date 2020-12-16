@@ -5,7 +5,8 @@ from util.Util import try_send
 import random
 
 class Balance:
-    def __init__(self, logging, session):
+    def __init__(self, client, logging, session):
+        self.client = client
         self.logging = logging
         self.session = session
         pass
@@ -17,4 +18,4 @@ class Balance:
             self.session.commit()
         user = self.session.query(User).filter(User.user_id == message.author.id).one()
         userDiscord = await self.client.fetch_user(user.user_id)
-        await try_send(message.channel, 'jahyadi coin {} {}'.format(userDiscord.name(), user.jahyadi_coin))
+        await try_send(message.channel, 'jahyadi coin {} {}'.format(userDiscord.name, user.jahyadi_coin))
