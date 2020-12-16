@@ -17,7 +17,7 @@ class Rich:
         i = 1
         for row in results:
             userDiscord = await self.client.fetch_user(row.user_id)
-            richest10 = richest10 + ("{}. {}".format(i, userDiscord))
+            richest10 = richest10 + ("{}. {}\n".format(i, userDiscord))
             i = i+1
 
         await try_send(message.channel, richest10)
