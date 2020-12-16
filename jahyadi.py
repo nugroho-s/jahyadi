@@ -6,6 +6,7 @@ import discord
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
+from command.Balance import Balance
 from command.Beg import Beg
 from command.Empati import Empati
 from command.Intonasi import Intonasi
@@ -32,7 +33,8 @@ commandhandlers = {
                     "say": Say(client, logging),
                     "empati": Empati(client, logging),
                     "intonasi": Intonasi(client, logging),
-                    "beg": Beg(logging, session)
+                    "beg": Beg(logging, session),
+                    "bal": Balance(logging, session)
                   }
 
 
