@@ -1,18 +1,28 @@
 import logging
+from datetime import datetime
 from os import environ
 
 import discord
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
 
+from command.Beg import Beg
 from command.Empati import Empati
 from command.Intonasi import Intonasi
 from command.Kontribusi import Kontribusi
 from command.Penis import Penis
 from command.Quote import Quote
 from command.Say import Say
+from model.User import User
 from util.Util import try_send
 
 logging.basicConfig(format='[%(levelname)s] [%(name)s] %(message)s', level=logging.INFO)
 prefix = "sudah"
+
+engine = create_engine('postgresql://{}:{}@localhost:5432/{}'.format(environ.get('PG_USERNAME'), environ.get('PG_PASSWORD'), environ.get('PG_DATABASE')), echo=True)
+conn = engine.connect()
+Session = sessionmaker(bind=engine)
+session = Session()
 
 client = discord.Client()
 
@@ -21,7 +31,8 @@ commandhandlers = {
                     "quote": Quote(logging),
                     "say": Say(client, logging),
                     "empati": Empati(client, logging),
-                    "intonasi": Intonasi(client, logging)
+                    "intonasi": Intonasi(client, logging),
+                    "beg": Beg(logging, session)
                   }
 
 
