@@ -20,7 +20,7 @@ from util.Util import try_send
 logging.basicConfig(format='[%(levelname)s] [%(name)s] %(message)s', level=logging.INFO)
 prefix = "sudah"
 
-engine = create_engine('postgresql://{}:{}@localhost:5432/{}'.format(environ.get('PG_USERNAME'), environ.get('PG_PASSWORD'), environ.get('PG_DATABASE')), echo=True)
+engine = create_engine(environ.get('DATABASE_URL'), echo=True)
 conn = engine.connect()
 Session = sessionmaker(bind=engine)
 session = Session()
