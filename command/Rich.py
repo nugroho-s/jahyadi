@@ -1,5 +1,7 @@
 from datetime import datetime
 
+import discord
+
 from model.User import User
 from util.Util import try_send
 
@@ -16,8 +18,11 @@ class Rich:
         richest10 = "Para penghasil kapital ekonomi:\n"
         i = 1
         for row in results:
-            userDiscord = await self.client.fetch_user(row.user_id)
-            richest10 = richest10 + ("{}. {}\n".format(i, userDiscord))
-            i = i+1
+            try:
+                userDiscord = await self.client.fetch_user(row.user_id)
+                richest10 = richest10 + ("{}. {} - {}\n".format(i, userDiscord, row.jahyadi_coin))
+                i = i+1
+            except discord.errors.NotFound:
+                pass
 
         await try_send(message.channel, richest10)
