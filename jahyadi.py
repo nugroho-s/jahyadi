@@ -13,6 +13,7 @@ from command.Intonasi import Intonasi
 from command.Kontribusi import Kontribusi
 from command.Penis import Penis
 from command.Quote import Quote
+from command.Rich import Rich
 from command.Say import Say
 from model.User import User
 from util.Util import try_send
@@ -34,7 +35,8 @@ commandhandlers = {
                     "empati": Empati(client, logging),
                     "intonasi": Intonasi(client, logging),
                     "beg": Beg(logging, session),
-                    "bal": Balance(client, logging, session)
+                    "bal": Balance(client, logging, session),
+                    "rich": Rich(client, logging, session)
                   }
 
 
