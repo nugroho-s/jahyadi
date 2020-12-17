@@ -24,6 +24,6 @@ class Beg(EconomyBase):
         if random.random() > .1:
             coin = random.randrange(0, 51)
             user.jahyadi_coin = user.jahyadi_coin + coin
-            user.updated_time = datetime.now()
-            self.session.commit()
+        user.updated_time = datetime.now()
+        self.session.commit()
         await try_send(message.channel, 'kau dapat {} jahyadi coins'.format(coin))
