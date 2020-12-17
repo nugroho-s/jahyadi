@@ -17,7 +17,7 @@ class Beg(EconomyBase):
         await super().do_response(message, args)
         user = self.session.query(User).filter(User.user_id == message.author.id).one()
 
-        if await super().is_cooldown(user.updated_time, 1, message.channel):
+        if await super().is_cooldown(user.updated_time, 60, message.channel):
             return
 
         coin = math.ceil(max(random.gauss(25, 20), 0))
