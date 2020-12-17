@@ -9,6 +9,7 @@ class User(Base):
     user_id=Column(Integer, primary_key=True)
     jahyadi_coin = Column(Integer)
     updated_time = Column(DateTime)
+    last_steal = Column(DateTime)
 
     def __init__(self, user_id, jahyadi_coin, updated_time):
         self.user_id = user_id

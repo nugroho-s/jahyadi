@@ -1,6 +1,7 @@
 import math
 import random
 import re
+from datetime import datetime
 
 import discord
 import sqlalchemy
@@ -21,6 +22,10 @@ class Steal(EconomyBase):
     async def do_response(self, message, args):
         await super().do_response(message, args)
         user = self.session.query(User).filter(User.user_id == message.author.id).one()
+
+        if await super().is_cooldown(user.last_steal, 60, message.channel):
+            return
+
         if len(args) > 2:
             user_id = args[2]
             user_id = re.findall("\d+", user_id)[0]
@@ -44,6 +49,7 @@ class Steal(EconomyBase):
             return
 
         user.jahyadi_coin = user.jahyadi_coin - MIN_COIN
+        user.last_steal = datetime.now()
 
         random_steal = random.random()
         if random_steal <= .4:
