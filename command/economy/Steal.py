@@ -52,15 +52,15 @@ class Steal(EconomyBase):
         user.last_steal = datetime.now()
 
         random_steal = random.random()
-        if random_steal <= .4:
+        if random_steal <= .35:
             # success
             payout = 0
             if random_steal < .05:
-                payout = random.uniform(.6, .8) * target.jahyadi_coin
+                payout = random.uniform(.5, .6) * target.jahyadi_coin
             elif random_steal <= .1:
-                payout = random.uniform(.4, .6) * target.jahyadi_coin
+                payout = random.uniform(.25, .5) * target.jahyadi_coin
             else:
-                payout = random.uniform(.2, .4) * target.jahyadi_coin
+                payout = random.uniform(.1, .25) * target.jahyadi_coin
 
             payout = math.floor(payout)
             target.jahyadi_coin = target.jahyadi_coin - payout
