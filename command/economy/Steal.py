@@ -71,7 +71,7 @@ class Steal(EconomyBase):
 
         self.session.commit()
         await try_send(message.channel, "Pencurian {} jahyadi coinmu sekarang {} dan jahyadi coin {} sekarang {}".format(
-            "sukses" if random_steal <= .4 else "gagal",
+            "sukses" if random_steal <= .35 else "gagal",
             user.jahyadi_coin,
             targetDc.name,
             target.jahyadi_coin
