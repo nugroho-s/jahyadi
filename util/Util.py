@@ -1,4 +1,8 @@
+from datetime import datetime
+
 from discord.errors import Forbidden
+
+from model.User import User
 
 
 async def try_send(channel, content=None, embed=None):

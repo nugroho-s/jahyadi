@@ -2,16 +2,16 @@ from datetime import datetime
 
 import discord
 
+from command.economy.EconomyBase import EconomyBase
 from model.User import User
 from util.Util import try_send
 
 
-class Rich:
+class Rich(EconomyBase):
     def __init__(self, client, logging, session):
+        super().__init__(session)
         self.client = client
         self.logging = logging
-        self.session = session
-        pass
 
     async def do_response(self, message, args):
         results = self.session.query(User).order_by(User.jahyadi_coin.desc()).limit(10)
@@ -19,8 +19,8 @@ class Rich:
         i = 1
         for row in results:
             try:
-                userDiscord = await self.client.fetch_user(row.user_id)
-                richest10 = richest10 + ("{}. {} - {}\n".format(i, userDiscord, row.jahyadi_coin))
+                user_discord = await self.client.fetch_user(row.user_id)
+                richest10 = richest10 + ("{}. {} - {}\n".format(i, user_discord, row.jahyadi_coin))
                 i = i+1
             except discord.errors.NotFound:
                 pass

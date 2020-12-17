@@ -1,21 +1,19 @@
 from datetime import datetime
 
+from command.economy.EconomyBase import EconomyBase
 from model.User import User
 from util.Util import try_send
 import random
 
-class Balance:
+
+class Balance(EconomyBase):
     def __init__(self, client, logging, session):
+        super().__init__(session)
         self.client = client
         self.logging = logging
-        self.session = session
-        pass
 
     async def do_response(self, message, args):
-        count = self.session.query(User).filter(User.user_id == message.author.id).count()
-        if count == 0:
-            self.session.add(User(message.author.id, 0, datetime.now()))
-            self.session.commit()
+        await super().do_response(message, args)
         user = self.session.query(User).filter(User.user_id == message.author.id).one()
         userDiscord = await self.client.fetch_user(user.user_id)
         await try_send(message.channel, 'jahyadi coin {} {}'.format(userDiscord.name, user.jahyadi_coin))
