@@ -42,6 +42,8 @@ commandhandlers = {
 @client.event
 async def on_ready():
     logging.info('We have logged in as {0.user}'.format(client))
+    logging.info('Serving {} guilds'.format(len(client.guilds)))
+    logging.info(client.guilds)
 
 
 @client.event
