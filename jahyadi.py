@@ -29,7 +29,7 @@ client = discord.Client()
 commandhandlers = {
                     "penis": Penis(client, logging),
                     "quote": Quote(logging),
-                    "say": Say(client, logging),
+                    "say": Say(client, logging, session),
                     "empati": Empati(client, logging),
                     "intonasi": Intonasi(client, logging),
                     "beg": Beg(logging, session),
