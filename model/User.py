@@ -10,6 +10,7 @@ class User(Base):
     jahyadi_coin = Column(Integer)
     updated_time = Column(DateTime)
     last_steal = Column(DateTime)
+    last_trivia = Column(DateTime)
 
     def __init__(self, user_id, jahyadi_coin, updated_time):
         self.user_id = user_id

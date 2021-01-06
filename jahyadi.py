@@ -8,6 +8,7 @@ from sqlalchemy.orm import sessionmaker
 from command.economy.Balance import Balance
 from command.economy.Beg import Beg
 from command.economy.Steal import Steal
+from command.economy.Trivia import Trivia
 from command.fun.Empati import Empati
 from command.fun.Intonasi import Intonasi
 from command.fun.Penis import Penis
@@ -16,7 +17,7 @@ from command.economy.Rich import Rich
 from command.Say import Say
 from util.Util import try_send
 
-logging.basicConfig(format='[%(levelname)s] [%(name)s] %(message)s', level=logging.INFO)
+logging.basicConfig(format='[%(levelname)s] [%(filename)s:%(lineno)d] %(message)s', level=logging.INFO)
 prefix = "sudah"
 
 engine = create_engine(environ.get('DATABASE_URL'))
@@ -35,7 +36,8 @@ commandhandlers = {
                     "beg": Beg(logging, session),
                     "bal": Balance(client, logging, session),
                     "rich": Rich(client, logging, session),
-                    "steal": Steal(client, logging, session)
+                    "steal": Steal(client, logging, session),
+                    "trivia": Trivia(client, logging, session)
                   }
 
 

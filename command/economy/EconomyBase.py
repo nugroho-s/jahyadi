@@ -1,3 +1,4 @@
+import math
 from datetime import datetime
 
 from model.User import User
@@ -16,7 +17,8 @@ class EconomyBase:
 
     async def is_cooldown(self, lut, seconds, channel):
         if lut is not None:
-            if (datetime.now() - lut).total_seconds() < seconds:
-                await try_send(channel, "kecepetan bodoh delaynya {} detik".format(seconds))
+            elapsed = (datetime.now() - lut).total_seconds()
+            if elapsed < seconds:
+                await try_send(channel, "kecepetan bodoh tunggu {} detik lagi".format(math.ceil(seconds - elapsed)))
                 return True
         return False
