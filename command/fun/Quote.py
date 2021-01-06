@@ -6,8 +6,6 @@ import urllib.request
 
 from util.Util import try_send
 
-logging.basicConfig(format='[%(levelname)s] [%(name)s] %(message)s', level=logging.INFO)
-
 
 class Quote:
     refresh_time = 3600

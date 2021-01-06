@@ -17,7 +17,7 @@ from command.economy.Rich import Rich
 from command.Say import Say
 from util.Util import try_send
 
-logging.basicConfig(format='[%(levelname)s] [%(name)s] %(message)s', level=logging.INFO)
+logging.basicConfig(format='[%(levelname)s] [%(filename)s:%(lineno)d] %(message)s', level=logging.INFO)
 prefix = "sudah"
 
 engine = create_engine(environ.get('DATABASE_URL'))
