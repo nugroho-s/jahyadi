@@ -1,11 +1,12 @@
 import math
 from datetime import datetime
 
+from command.Command import Command
 from model.User import User
 from util.Util import try_send
 
 
-class EconomyBase:
+class EconomyBase(Command):
     def __init__(self, session):
         self.session = session
 

@@ -4,11 +4,12 @@ import re
 from discord.errors import NotFound
 from discord.errors import Forbidden
 
+from command.Command import Command
 from model.AllowedSay import AllowedSay
 from util.Util import try_send
 
 
-class Say:
+class Say(Command):
     def __init__(self, client, logging, session):
         self.client = client
         self.logging = logging

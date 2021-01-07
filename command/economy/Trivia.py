@@ -47,4 +47,3 @@ class Trivia(EconomyBase):
                 await try_send(message.channel, "Kau dapat 100 jahyadi coin")
 
         self.client.loop.create_task(wait_answer())
-        self.logging.info("done trivia")

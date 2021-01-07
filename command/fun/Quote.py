@@ -4,10 +4,11 @@ import random
 import time
 import urllib.request
 
+from command.Command import Command
 from util.Util import try_send
 
 
-class Quote:
+class Quote(Command):
     refresh_time = 3600
     quotes_cache = {}
 

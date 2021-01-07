@@ -5,6 +5,7 @@ import discord
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
+from command.Stat import Stat
 from command.economy.Balance import Balance
 from command.economy.Beg import Beg
 from command.economy.Steal import Steal
@@ -37,7 +38,8 @@ commandhandlers = {
                     "bal": Balance(client, logging, session),
                     "rich": Rich(client, logging, session),
                     "steal": Steal(client, logging, session),
-                    "trivia": Trivia(client, logging, session)
+                    "trivia": Trivia(client, logging, session),
+                    "stat": Stat()
                   }
 
 
@@ -69,7 +71,7 @@ async def on_message(message):
         await try_send(message.channel, help_str[0:-2])
 
     if args[1] in commandhandlers:
-        await commandhandlers[args[1]].do_response(message, args)
+        await commandhandlers[args[1]].process(message, args)
 
 
 client.run(environ.get('BOT_TOKEN'))
