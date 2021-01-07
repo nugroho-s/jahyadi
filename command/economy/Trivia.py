@@ -27,10 +27,10 @@ class Trivia(EconomyBase):
         self.session.commit()
         quote = Quote.get_random_quote()
         quote_array = quote.split()
-        random_idx = random.randrange(0, len(quote_array))
-        quote_array[random_idx] = re.sub(r'[^\w]', '', quote_array[random_idx])
-        answer = quote_array[random_idx]
-        quote_array[random_idx] = '`' + ('_ ' * len(quote_array[random_idx])) + '`'
+        random_idx = 0
+        answer = re.sub(r'[^\w]', '', quote_array[random_idx])
+        quote_array[random_idx] = re.sub(r'[\w]', '_ ', quote_array[random_idx])
+        quote_array[random_idx] = '`' + quote_array[random_idx] + '`'
         await try_send(message.channel, ' '.join(quote_array))
 
         def check(m):
