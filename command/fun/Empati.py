@@ -2,10 +2,11 @@ import discord
 import re
 import random
 
+from command.Command import Command
 from util.Util import try_send
 
 
-class Empati:
+class Empati(Command):
     def __init__(self, client, logging):
         self.client = client
         self.logging = logging

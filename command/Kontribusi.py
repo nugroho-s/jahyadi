@@ -1,7 +1,8 @@
+from command.Command import Command
 from util.Util import try_send
 
 
-class Kontribusi:
+class Kontribusi(Command):
     def __init__(self):
         pass
 
