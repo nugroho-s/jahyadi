@@ -35,11 +35,16 @@ class Trivia(EconomyBase):
 
         def check(m):
             return m.content.lower() == answer.lower() and m.channel == message.channel and m.author == message.author
-        try:
-            await self.client.wait_for('message', timeout=10.0, check=check)
-        except asyncio.TimeoutError:
-            await try_send(message.channel, "Seems like kau terlalu bodoh untuk menjawab")
-        else:
-            user.jahyadi_coin += 100
-            self.session.commit()
-            await try_send(message.channel, "Kau dapat 100 jahyadi coin")
+
+        async def wait_answer():
+            try:
+                await self.client.wait_for('message', timeout=10.0, check=check)
+            except asyncio.TimeoutError:
+                await try_send(message.channel, "Seems like kau terlalu bodoh untuk menjawab")
+            else:
+                user.jahyadi_coin += 100
+                self.session.commit()
+                await try_send(message.channel, "Kau dapat 100 jahyadi coin")
+
+        self.client.loop.create_task(wait_answer())
+        self.logging.info("done trivia")
