@@ -27,7 +27,7 @@ class Trivia(EconomyBase):
         self.session.commit()
         quote = Quote.get_random_quote()
         quote_array = quote.split()
-        random_idx = 0
+        random_idx = random.randrange(0, len(quote_array))
         answer = re.sub(r'[^\w]', '', quote_array[random_idx])
         quote_array[random_idx] = re.sub(r'[\w]', '_ ', quote_array[random_idx])
         quote_array[random_idx] = '`' + quote_array[random_idx] + '`'
