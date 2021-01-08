@@ -24,6 +24,12 @@ class Bet(EconomyBase):
             return
 
         bet_amount = int(args[2])
+        if bet_amount < 0:
+            return
+        if bet_amount > user.jahyadi_coin:
+            await try_send(message.channel, "jahyadi coinmu cuma {}".format(user.jahyadi_coin))
+            return
+
         dice_player = random.randrange(1, 7)
         dice_dealer = random.randrange(1, 7)
         if dice_player > dice_dealer:
