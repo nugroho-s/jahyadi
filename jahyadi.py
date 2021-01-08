@@ -8,6 +8,7 @@ from sqlalchemy.orm import sessionmaker
 from command.Stat import Stat
 from command.economy.Balance import Balance
 from command.economy.Beg import Beg
+from command.economy.Bet import Bet
 from command.economy.Steal import Steal
 from command.economy.Trivia import Trivia
 from command.fun.Empati import Empati
@@ -39,7 +40,8 @@ commandhandlers = {
                     "rich": Rich(client, logging, session),
                     "steal": Steal(client, logging, session),
                     "trivia": Trivia(client, logging, session),
-                    "stat": Stat()
+                    "stat": Stat(),
+                    "bet": Bet(client, logging, session)
                   }
 
 
