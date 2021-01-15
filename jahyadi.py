@@ -1,4 +1,5 @@
 import logging
+import re
 from os import environ
 
 import discord
@@ -59,6 +60,11 @@ async def on_message(message):
 
     if '750726551762370680>' in message.content:
         await try_send(message.channel, 'Kalau mau aku baikan, dont ever tag me!!')
+
+    pattern = re.compile('[\W_]+')
+    alphanumeric_content = pattern.sub('', message.content)
+    if alphanumeric_content.lower() == 'assalamualaikum':
+        await try_send(message.channel, 'waalaikumsalam')
 
     comparator_prefix = message.content[:len(prefix)].lower()
     if comparator_prefix != prefix:
