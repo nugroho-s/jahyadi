@@ -6,6 +6,7 @@ import discord
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
+from command.Quran import Quran
 from command.Stat import Stat
 from command.economy.Balance import Balance
 from command.economy.Beg import Beg
@@ -42,7 +43,8 @@ commandhandlers = {
                     "steal": Steal(client, logging, session),
                     "trivia": Trivia(client, logging, session),
                     "stat": Stat(),
-                    "bet": Bet(client, logging, session)
+                    "bet": Bet(client, logging, session),
+                    "quran": Quran(logging)
                   }
 
 
